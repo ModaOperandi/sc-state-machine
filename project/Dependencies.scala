@@ -15,13 +15,16 @@ object Dependencies {
 
   val Logging = Seq(
     libraryDependencies ++= Seq(
-      "com.amazonaws"     % "aws-java-sdk-cloudwatch" % AwsSdkVersion excludeAll ("commons-logging", "commons-logging"),
-      "ch.qos.logback"    % "logback-classic"         % "1.2.3", // logging
-      "ch.qos.logback"    % "logback-core"            % "1.2.3", // logging
-      "org.slf4j"         % "jcl-over-slf4j"          % "1.7.30",
-      "org.slf4j"         % "jul-to-slf4j"            % "1.7.30",
-      "io.chrisdavenport" %% "log4cats-slf4j"         % "1.0.1"
+      "ch.qos.logback"    % "logback-classic" % "1.2.3", // logging
+      "ch.qos.logback"    % "logback-core"    % "1.2.3", // logging
+      "org.slf4j"         % "jcl-over-slf4j"  % "1.7.30",
+      "org.slf4j"         % "jul-to-slf4j"    % "1.7.30",
+      "io.chrisdavenport" %% "log4cats-slf4j" % "1.0.1"
     )
+  )
+
+  val FS2 = Seq(
+    libraryDependencies ++= Seq("co.fs2" %% "fs2-core" % "2.0.0")
   )
 
   val upperbound = Seq(libraryDependencies += "org.systemfw" %% "upperbound" % "0.2.0-M1")

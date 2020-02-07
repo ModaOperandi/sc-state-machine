@@ -1,6 +1,5 @@
 package retail.fsm
 
-import com.modaoperandi.sc.shared.binlog.MojoBinLogModel.Sku
 import retail.model.{ Guid, InventoryItem, OrderItem, WmsLocation }
 
 sealed trait Command
@@ -22,7 +21,5 @@ case class UpdateInventoryItemLocation(
 ) extends Command
 
 case class DeleteInventoryItem(uuid: Guid[InventoryItem], sku: String) extends Command
-
-case class DeleteSku(uuid: Guid[Sku], sku: String) extends Command
 
 case class NewOrderItem(uuid: Guid[OrderItem], sku: String) extends Command

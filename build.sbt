@@ -57,6 +57,7 @@ lazy val examples =
       artifactorySettings,
       Dependencies.TestLib,
       Dependencies.Logging,
+      Dependencies.FS2,
       addCommandAlias("format", ";scalafmt;test:scalafmt;scalafmtSbt")
     )
     .enablePlugins(GitVersioning)
