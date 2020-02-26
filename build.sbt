@@ -4,6 +4,7 @@ import sbt.Keys.scalaSource
 lazy val commonSettings = Seq(
   ThisBuild / turbo := true,
   scalaVersion := "2.12.10",
+  organization := "com.modaoperandi",
   sources in(Compile, doc) := Seq(),
   scalaSource in Compile := baseDirectory.value / "app",
   scalaSource in Test := baseDirectory.value / "test",

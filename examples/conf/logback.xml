@@ -21,5 +21,6 @@
     <logger name="ch.qos.logback" level="ERROR" />
     <logger name="o.a.h.i.c." level="ERROR" />
     <logger name="example" level="DEBUG"/>
+    <logger name="demo" level="DEBUG"/>
     <logger name="org.jdbcdslog" level="ERROR"/>
 </configuration>

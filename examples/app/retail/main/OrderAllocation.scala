@@ -53,7 +53,7 @@ object OrderAllocation extends IOApp {
       storedEvts <- persister.state.get
       _          <- logger.info(s"persisted events $storedEvts")
       _          <- logger.info(s"latest state $newState")
-      _          <- logger.info(s"generated messages ${msgs.flatten.toList}")
+      _          <- logger.info(s"generated messages ${msgs.flatten}")
     } yield ()).as(ExitCode.Success)
 
   def streamOfCommands(inventoryItemGuid: Guid[InventoryItem]): fs2.Stream[IO, Command] =
