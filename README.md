@@ -8,9 +8,9 @@ It was inspired by following:
 
 ### Terminology
 
-- Command: the message incoming to State machine *before* it hits and updates internal state
+- Command: the message incoming to State machine *before* it hits and updates internal state. A command explicitly indicates intent, what we are trying to do. This may need to be mapped from an external message (from an upstream system) that does not make that intent explicit
 - Event: message emitted as the *result of something already happened* with the state
-- Message: message emitted downstream, it may be the same as Event
+- Message: message emitted downstream, it may be the same as Event. Messages emitted downstream are usually the Event, the latest State, or a mapped message derived from one or both.
 - State: the data evolved by applying events, it has some initial state which gets updated by the events
 - Total order of events: Permanently persisted total order of Events, which later may be replayed at any given time and the state may be restored. It is also very important that we can build new state machine on top existing total order of events
 
@@ -18,7 +18,7 @@ It was inspired by following:
 
 ![Event Sourcing](images/EventSourcing.png) 
 
-When `Command` hits state machine, first what happening, the latest state restored from the `total order` of previous events. There is always `empty` or `initial` state has to be provided as starting point. On the picture it is `State0`. Every event is the storage replayed against state machine starting from `State0`. 
+When `Command` hits state machine, first what happening, the latest state restored from the `total order` of previous events. There is always `empty` or `initial` or `zero` state has to be provided as starting point. On the picture it is `State0`. Every event is the storage replayed against state machine starting from `State0`. 
 
 Resulting `State3` is the latest state *before* new command was executed. At this point `state machine` has `Command` and `State3`, having these two artifacts, new `Event` may be calculated and persisted into the `total order` store. 
 
@@ -67,7 +67,7 @@ def updateState(evt: Event): State[MathState, List[Event]] =
     }
 ``` 
 
-This function totally describes your domain and gas to handle all possible events
+This function totally describes your domain and has to handle all possible events
 
 ##### Commands to Events, How?
 
