@@ -1,6 +1,9 @@
 import sbt.ExclusionRule
 import sbt.Keys.scalaSource
 
+organization := "com.modaoperandi"
+name         := "sc-state-machine"
+
 lazy val commonSettings = Seq(
   ThisBuild / turbo        := true,
   scalaVersion             := "2.12.10",
