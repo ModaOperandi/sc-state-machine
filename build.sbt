@@ -6,7 +6,7 @@ name         := "sc-state-machine"
 
 lazy val commonSettings = Seq(
   ThisBuild / turbo        := true,
-  scalaVersion             := "2.12.10",
+  scalaVersion             := "2.13.1",
   organization             := "com.modaoperandi",
   sources                  in (Compile, doc) := Seq(),
   scalaSource              in Compile := baseDirectory.value / "app",
@@ -28,7 +28,6 @@ lazy val commonSettings = Seq(
     "-language:postfixOps",
     "-Xlint",                // enable handy linter warnings
     "-Xfatal-warnings",      // turn compiler warnings into errors
-    "-Ypartial-unification", // allow the compiler to unify type constructors of different arities
     "-Ywarn-macros:after"    // allows the compiler to resolve implicit imports being flagged as unused
   )
 )

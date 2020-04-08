@@ -32,7 +32,7 @@ package object statemachine {
       event      <- stateRef.modifyState(nextStateM)
       newState   <- stateRef.get
       _          <- logger.debug(s"new state $newState after applying command $cmd and event $event emitted")
-    } yield newState → event
+    } yield newState -> event
 
   def replayEvents[EVT, STATE, MSG](
     evts: Seq[EVT]
