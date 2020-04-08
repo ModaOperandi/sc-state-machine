@@ -26,9 +26,9 @@ lazy val commonSettings = Seq(
     "-language:higherKinds",         // allow higher kinded types without `import scala.language.higherKinds`
     "-language:implicitConversions", // allow use of implicit conversions
     "-language:postfixOps",
-    "-Xlint",                // enable handy linter warnings
-    "-Xfatal-warnings",      // turn compiler warnings into errors
-    "-Ywarn-macros:after"    // allows the compiler to resolve implicit imports being flagged as unused
+    "-Xlint",             // enable handy linter warnings
+    "-Xfatal-warnings",   // turn compiler warnings into errors
+    "-Ywarn-macros:after" // allows the compiler to resolve implicit imports being flagged as unused
   )
 )
 
