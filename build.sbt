@@ -3,10 +3,10 @@ import sbt.Keys.scalaSource
 
 organization := "com.modaoperandi"
 name         := "sc-state-machine"
+scalaVersion             := "2.13.1"
 
 lazy val commonSettings = Seq(
   ThisBuild / turbo        := true,
-  scalaVersion             := "2.13.1",
   organization             := "com.modaoperandi",
   sources                  in (Compile, doc) := Seq(),
   scalaSource              in Compile := baseDirectory.value / "app",

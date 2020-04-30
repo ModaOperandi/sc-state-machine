@@ -9,13 +9,13 @@ import cats.implicits._
 
 package object statemachine {
   def nextState[F[_]: Functor, CMD, STATE, EVT, MSG](cmd: CMD, state: STATE)(
-    persist: (CMD, STATE) => F[EVT],
+    persist: (CMD, STATE) => F[List[EVT]],
     updateState: EVT => State[STATE, List[MSG]]
   ): F[State[STATE, List[MSG]]] =
-    persist(cmd, state) map updateState
+    persist(cmd, state).map(evts => replayEvents[EVT, STATE, MSG](evts)(updateState))
 
   def calcNewState[F[_]: Monad: Sync, CMD, STATE, EVT, MSG](cmd: CMD)(
-    persist: (CMD, STATE) => F[EVT],
+    persist: (CMD, STATE) => F[List[EVT]],
     historyFetcher: CMD => F[List[EVT]],
     initialState: () => STATE,
     updateState: EVT => State[STATE, List[MSG]]
