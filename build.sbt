@@ -3,7 +3,7 @@ import sbt.Keys.scalaSource
 
 organization := "com.modaoperandi"
 name         := "sc-state-machine"
-scalaVersion             := "2.13.1"
+scalaVersion := "2.13.1"
 
 lazy val commonSettings = Seq(
   ThisBuild / turbo        := true,
