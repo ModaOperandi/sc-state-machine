@@ -14,15 +14,15 @@ import com.modaoperandi.sc.statemachine.fsm.{
 }
 
 case class Persister(totalOrderEvents: Ref[IO, List[Event]])
-    extends ((Command, MathState) => IO[Event]) {
-  override def apply(v1: Command, s1: MathState): IO[Event] =
+    extends ((Command, MathState) => IO[List[Event]]) {
+  override def apply(v1: Command, s1: MathState): IO[List[Event]] =
     totalOrderEvents.modifyState {
       State { st =>
         val e: Event = v1 match {
           case Add(v)      => Added(v)
           case Subtract(v) => Subtracted(v)
         }
-        (e :: st, e)
+        (e :: st, e :: Nil)
       }
     }
 }

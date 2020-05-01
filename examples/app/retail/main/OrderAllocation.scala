@@ -29,20 +29,19 @@ object OrderAllocation extends IOApp {
       persister                                        <- Ref.of[IO, List[Event]](Nil).map(Persister.apply)
       inventoryItemGuid                                <- IO.delay(UUID.randomUUID()).map(uuid => Guid[InventoryItem](uuid))
       (newState, msgs) <- streamOfCommands(inventoryItemGuid)
-                           .evalMap(
-                             command =>
-                               statemachine
-                                 .calcNewState[
-                                   IO,
-                                   Command,
-                                   AllocationState,
-                                   Event,
-                                   AllocationResult
-                                 ](command)(
-                                   persist = persister,
-                                   historyFetcher = _ => persister.state.get,
-                                   initialState = () => AllocationState(sku = "123"),
-                                   updateState = updateState
+                           .evalMap(command =>
+                             statemachine
+                               .calcNewState[
+                                 IO,
+                                 Command,
+                                 AllocationState,
+                                 Event,
+                                 AllocationResult
+                               ](command)(
+                                 persist = persister,
+                                 historyFetcher = _ => persister.state.get,
+                                 initialState = () => AllocationState(sku = "123"),
+                                 updateState = updateState
                                )
                            )
                            .compile
