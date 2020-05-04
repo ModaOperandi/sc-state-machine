@@ -14,8 +14,8 @@ import retail.fsm.{
 }
 
 case class Persister(state: Ref[IO, List[Event]])
-    extends ((Command, AllocationState) => IO[Event]) {
-  override def apply(v1: Command, s1: AllocationState): IO[Event] =
+    extends ((Command, AllocationState) => IO[List[Event]]) {
+  override def apply(v1: Command, s1: AllocationState): IO[List[Event]] =
     state.modifyState {
       State { st =>
         val e: Event = v1 match {
@@ -24,7 +24,7 @@ case class Persister(state: Ref[IO, List[Event]])
           case NewOrderItem(uuid, sku) => OrderItemAdded(uuid, sku)
           case _                       => throw new UnsupportedOperationException("not implemented")
         }
-        (e :: st, e)
+        (e :: st, e :: Nil)
       }
     }
 }
