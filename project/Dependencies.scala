@@ -4,7 +4,7 @@ import sbt._
 object Dependencies {
   val TestLib = Seq(
     libraryDependencies ++= Seq(
-      "org.scalatest"  %% "scalatest"               % "3.1.0"  % Test, // ApacheV2
+      "org.scalatest"  %% "scalatest"               % "3.1.2"  % Test, // ApacheV2
       "org.scalamock"  %% "scalamock"               % "4.4.0"  % Test,
       "org.mockito"    % "mockito-core"             % "3.2.4"  % Test,
       "org.mockito"    %% "mockito-scala-scalatest" % "1.11.0" % Test,
