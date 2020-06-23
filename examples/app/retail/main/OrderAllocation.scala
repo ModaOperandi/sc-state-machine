@@ -5,7 +5,6 @@ import java.util.UUID
 import cats.data.State
 import cats.effect.concurrent.Ref
 import cats.effect.{ ExitCode, IO, IOApp }
-import cats.implicits._
 import com.modaoperandi.sc.statemachine
 import io.chrisdavenport.log4cats.SelfAwareStructuredLogger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
