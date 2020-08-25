@@ -24,7 +24,7 @@ object Dependencies {
   )
 
   val FS2 = Seq(
-    libraryDependencies ++= Seq("co.fs2" %% "fs2-core" % "2.4.2")
+    libraryDependencies ++= Seq("co.fs2" %% "fs2-core" % "2.4.4")
   )
 
   val upperbound = Seq(libraryDependencies += "org.systemfw" %% "upperbound" % "0.2.0-M1")
