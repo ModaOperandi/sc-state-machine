@@ -6,7 +6,7 @@ object Dependencies {
     libraryDependencies ++= Seq(
       "org.scalatest"  %% "scalatest"               % "3.2.0"  % Test, // ApacheV2
       "org.scalamock"  %% "scalamock"               % "4.4.0"  % Test,
-      "org.mockito"    % "mockito-core"             % "3.3.3"  % Test,
+      "org.mockito"    % "mockito-core"             % "3.5.11"  % Test,
       "org.mockito"    %% "mockito-scala-scalatest" % "1.14.8" % Test,
       "org.mockito"    %% "mockito-scala-cats"      % "1.14.8" % Test,
       "org.scalacheck" %% "scalacheck"              % "1.14.3" % Test
