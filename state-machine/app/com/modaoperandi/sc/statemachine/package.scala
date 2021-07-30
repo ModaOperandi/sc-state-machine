@@ -1,10 +1,10 @@
 package com.modaoperandi.sc
 
-import cats.{ Functor, Monad }
+import cats.{Functor, Monad}
 import cats.data.State
 import cats.effect.Sync
 import cats.effect.concurrent.Ref
-import io.chrisdavenport.log4cats.SelfAwareStructuredLogger
+import io.chrisdavenport.log4cats.Logger
 import cats.implicits._
 
 package object statemachine {
@@ -19,7 +19,7 @@ package object statemachine {
     historyFetcher: CMD => F[List[EVT]],
     initialState: () => STATE,
     updateState: EVT => State[STATE, List[MSG]]
-  )(implicit logger: SelfAwareStructuredLogger[F]): F[(STATE, List[MSG])] =
+  )(implicit logger: Logger[F]): F[(STATE, List[MSG])] =
     for {
       hist       <- historyFetcher(cmd)
       _          <- logger.debug(s"fetched history $hist for $cmd")
