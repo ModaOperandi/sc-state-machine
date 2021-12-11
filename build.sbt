@@ -3,19 +3,20 @@ import sbt.Keys.scalaSource
 
 organization := "com.modaoperandi"
 name         := "sc-state-machine"
-scalaVersion := "2.13.2"
+scalaVersion := "2.13.7"
 
 lazy val commonSettings = Seq(
-  ThisBuild / turbo        := true,
-  organization             := "com.modaoperandi",
-  sources                  in (Compile, doc) := Seq(),
-  scalaSource              in Compile := baseDirectory.value / "app",
-  scalaSource              in Test := baseDirectory.value / "test",
-  resourceDirectory        in Compile := baseDirectory.value / "conf",
-  resourceDirectory        in Test := baseDirectory.value / "test_resources",
-  Test / parallelExecution := false,
-  resolvers                += Resolver.bintrayRepo("ovotech", "maven"),
-  fork                     in Test := true,
+  ThisBuild / turbo           := true,
+  organization                := "com.modaoperandi",
+  Compile / scalaSource       := baseDirectory.value / "app",
+  Compile / resourceDirectory := baseDirectory.value / "conf",
+  Test / scalaSource          := baseDirectory.value / "test",
+  Test / resourceDirectory    := baseDirectory.value / "test_resources",
+  Test / parallelExecution    := false,
+  Test / fork                 := true,
+  resolvers                   += Resolver.bintrayRepo("ovotech", "maven"),
+  publishMavenStyle           := true,
+  pomIncludeRepository        := (_ => false),
   addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),
   scalacOptions ++= Seq(
     "-encoding",
@@ -25,10 +26,10 @@ lazy val commonSettings = Seq(
     "-feature",                      // warn about misused language features
     "-language:higherKinds",         // allow higher kinded types without `import scala.language.higherKinds`
     "-language:implicitConversions", // allow use of implicit conversions
-    "-language:postfixOps",
-    "-Xlint",             // enable handy linter warnings
-    "-Xfatal-warnings",   // turn compiler warnings into errors
-    "-Ywarn-macros:after" // allows the compiler to resolve implicit imports being flagged as unused
+    "-language:postfixOps",          // enable postfix operators
+    "-Xlint",                        // enable handy linter warnings
+    "-Xfatal-warnings",              // turn compiler warnings into errors
+    "-Ywarn-macros:after"            // allows the compiler to resolve implicit imports being flagged as unused
   )
 )
 
@@ -77,9 +78,7 @@ inThisBuild(
         "git@github.com:ModaOperandi/sc-state-machine.git"
       )
     ),
-    publishMavenStyle               := true,
     Test / publishArtifact          := true,
-    pomIncludeRepository            := (_ => false),
     pgpPublicRing                   := file(".circleci/local.pubring.asc"),
     pgpSecretRing                   := file(".circleci/local.secring.asc"),
     releaseEarlyWith                := SonatypePublisher,
