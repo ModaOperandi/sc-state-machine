@@ -9,7 +9,7 @@ object Dependencies {
       "org.mockito"    % "mockito-core"             % "3.3.3"  % Test,
       "org.mockito"    %% "mockito-scala-scalatest" % "1.14.8" % Test,
       "org.mockito"    %% "mockito-scala-cats"      % "1.14.8" % Test,
-      "org.scalacheck" %% "scalacheck"              % "1.14.3" % Test
+      "org.scalacheck" %% "scalacheck"              % "1.15.4" % Test
     )
   )
 
