@@ -5,8 +5,6 @@
 
 # FP State Machine
 
-[![CircleCI](https://circleci.com/gh/ModaOperandi/sc-state-machine.svg?style=svg&circle-token=57b57263ec8eb3e4ab5902fd577f3dfa937ad906)](https://app.circleci.com/pipelines/github/ModaOperandi/sc-state-machine)
-
 This project created to help build the event sources state machines using functional scala.
 
 ### Terminology
